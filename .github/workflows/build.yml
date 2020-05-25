@@ -23,8 +23,10 @@ jobs:
       - name: Set Github Short SHA
         id: var
         run: |
-          echo ::set-output name=short_sha::$(git rev-parse --short=4 ${{ github.sha }})
+          echo ::set-output name=short_sha::$(git rev-parse --short=7 ${{ github.sha }})
+          echo ::set-output name=run_id::${{ github.run_id }}
 
       - name: Get the Short SHA
         run: |
-          echo Getting this ${{ steps.var.outputs.short_sha }}
+          echo Short SHA is ${{ steps.var.outputs.short_sha }}
+          echo Run ID is ${{ steps.var.outputs.run_id }}
