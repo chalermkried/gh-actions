@@ -23,7 +23,7 @@ jobs:
       - name: Set SHA and ID as Output
         id: var
         run: |
-          echo "::set-output name=short_sha::$(git rev-parse --short=7 ${{ github.sha }})"
+          echo "::set-output name=short_sha::${{ github.sha }}"
           echo "::set-output name=run_id::${{ github.run_id }}"
 
       - name: Set SHA and ID as ENV
