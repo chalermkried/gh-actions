@@ -34,3 +34,13 @@ jobs:
       - name: Read SHA and ID from ENV
         run: |
           make test/env
+
+  test2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read SHA and ID from ENV (2)
+        run: |
+          make test/env
