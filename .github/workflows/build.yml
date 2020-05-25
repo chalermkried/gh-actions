@@ -23,7 +23,7 @@ jobs:
       - name: Set SHA and ID as Output
         id: var
         run: |
-          echo ::set-output name=short_sha::$(git rev-parse --short=7 ${ GITHUB_SHA })
+          echo ::set-output name=short_sha::$(git rev-parse --short=7 $GITHUB_SHA)
           echo ::set-output name=run_id::${{ github.run_id }}
 
       - name: Set SHA and ID as ENV
@@ -33,15 +33,5 @@ jobs:
           echo ::set-env name=COMBINED::$(echo ${{ steps.var.outputs.short_sha }}-${{ steps.var.outputs.run_id }}.zip)
 
       - name: Read SHA and ID from ENV
-        run: |
-          make test/env
-
-  test2:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Read SHA and ID from ENV (2)
         run: |
           make test/env
