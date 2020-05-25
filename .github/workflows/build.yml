@@ -30,7 +30,7 @@ jobs:
         run: |
           echo ::set-env name=SHORT_SHA::$(echo ${{ steps.var.outputs.short_sha }})
           echo ::set-env name=RUN_ID::$(echo ${{ steps.var.outputs.run_id }})
-          echo ::set-env name=COMBINED::$(echo ${{ steps.var.outputs.short_sha }}-${{ steps.var.outputs.run_id }})
+          echo ::set-env name=COMBINED::$(echo ${{ env.SHORT_SHA }}-${{ env.RUN_ID }})
 
       - name: Read SHA and ID from ENV
         run: |
