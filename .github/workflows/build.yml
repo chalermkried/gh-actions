@@ -29,7 +29,7 @@ jobs:
       - name: Set SHA and ID as ENV
         run: |
           echo ::set-env name=SHORT_SHA::$(echo ${{ steps.var.outputs.short_sha }})
-          echo ::set-env name=RUN_ID::%(echo ${{ steps.var.outputs.run_id }})
+          echo ::set-env name=RUN_ID::$(echo ${{ steps.var.outputs.run_id }})
 
       - name: Read SHA and ID from ENV
         run: |
