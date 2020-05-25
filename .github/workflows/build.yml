@@ -23,12 +23,13 @@ jobs:
       - name: Set SHA and ID as Output
         id: var
         run: |
-          echo ::set-output name=short_sha::$(git rev-parse --short=7 ${{ github.sha }})
+          echo "::set-output name=short_sha::$(git rev-parse --short=7 ${{ github.sha }})"
+          echo "::set-output name=run_id::${{ github.run_id }}"
 
       - name: Set SHA and ID as ENV
         run: |
-          echo ::set-env name=SHORT_SHA::{{ steps.var.outputs.short_sha }}
-          echo ::set-env name=RUN_ID::${{ github.run_id }}
+          echo "::set-env name=SHORT_SHA::{{ steps.var.outputs.short_sha }}"
+          echo "::set-env name=RUN_ID::${{ steps.var.outputs.run_id }}"
 
       - name: Read SHA and ID from ENV
         run: |
