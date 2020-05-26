@@ -28,12 +28,11 @@ jobs:
       - name: Set SHA and ID as Output
         id: var
         run: |
-          echo ::set-output name=short_sha::${{ env.MOCK }}-$(git log -1 --format="%h").zip
           echo ::set-output name=run_id::${{ github.run_id }}
 
       - name: Set SHA and ID as ENV
         run: |
-          echo ::set-env name=SHORT_SHA::$(echo ${{ steps.var.outputs.short_sha }})
+          echo ::set-env name=SHORT_SHA::${{ env.MOCK }}-$(git log -1 --format="%h").zip
           echo ::set-env name=RUN_ID::$(echo ${{ steps.var.outputs.run_id }})
           echo ::set-env name=COMBINED::$(echo ${{ steps.var.outputs.short_sha }}-${{ steps.var.outputs.run_id }}.zip)
 
