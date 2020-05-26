@@ -40,5 +40,5 @@ jobs:
       - name: Read SHA and ID from ENV
         run: make test/env
           
-      - name: Read Global ENV from make
-        run: make test/global
+      - name: Print Commit SHA
+        run: make print/sha
