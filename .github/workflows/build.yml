@@ -38,9 +38,7 @@ jobs:
           echo ::set-env name=COMBINED::$(echo ${{ steps.var.outputs.short_sha }}-${{ steps.var.outputs.run_id }}.zip)
 
       - name: Read SHA and ID from ENV
-        run: |
-          make test/env
+        run: make test/env
           
       - name: Read Global ENV from make
-        run: |
-          make test/global
+        run: make test/global
