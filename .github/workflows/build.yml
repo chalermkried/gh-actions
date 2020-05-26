@@ -32,7 +32,7 @@ jobs:
 
       - name: Set SHA and ID as ENV
         run: |
-          echo ::set-env name=SHORT_SHA::${{ env.MOCK }}-$(git log -1 --format="%h")-$({{ steps.var.outputs.run_id }}).zip
+          echo ::set-env name=SHORT_SHA::${{ env.MOCK }}-$(git log -1 --format="%h")-${{ steps.var.outputs.run_id }}.zip
           echo ::set-env name=RUN_ID::$(echo ${{ steps.var.outputs.run_id }})
 
       - name: Read SHA and ID from ENV
