@@ -28,7 +28,7 @@ jobs:
         id: tag
         uses: "WyriHaximus/github-action-get-previous-tag@master"
         env:
-          GITHUB_TOKEN: Test
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set SHA and ID as Output
         id: var
