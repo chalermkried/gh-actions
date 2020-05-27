@@ -24,9 +24,6 @@ jobs:
 
       # - name: Install Dependencies
       #   run: npm ci
-      - name: 'Get Latest tag'
-        uses: actions-ecosystem/action-get-latest-tag@v1
-        id: get-latest-tag
 
       - name: Set SHA and ID as Output
         id: var
@@ -41,5 +38,6 @@ jobs:
       - name: Read SHA and ID from ENV
         run: make test/env
 
-      - name: Read Latest tag
-        run: echo ${{ steps.get-latest-tag.outputs.tag }}
+      - name: Get Latest tag from this branch
+        run: echo $(git describe --abbrev=0 --tags)
+        
