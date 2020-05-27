@@ -2,5 +2,5 @@
 
 export default (req, res) => {
   res.statusCode = 200
-  res.json({ name: 'John Doe' })
+  res.json({ name: 'John Doe', test: 'this is branch with v 0.0.1' })
 }
