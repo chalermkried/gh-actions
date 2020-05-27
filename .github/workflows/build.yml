@@ -25,10 +25,8 @@ jobs:
       # - name: Install Dependencies
       #   run: npm ci
       - name: 'Get Latest tag'
-        id: tag
-        uses: "WyriHaximus/github-action-get-previous-tag@master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
 
       - name: Set SHA and ID as Output
         id: var
@@ -44,4 +42,4 @@ jobs:
         run: make test/env
 
       - name: Read Latest tag
-        run: echo ${{ steps.tag.outputs.tag }}
+        run: echo ${{ steps.get-latest-tag.outputs.tag }}
