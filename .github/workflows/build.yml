@@ -24,6 +24,11 @@ jobs:
 
       # - name: Install Dependencies
       #   run: npm ci
+      - name: 'Get Latest tag'
+        id: tag
+        uses: "WyriHaximus/github-action-get-previous-tag@master"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Set SHA and ID as Output
         id: var
@@ -32,8 +37,11 @@ jobs:
 
       - name: Set SHA and ID as ENV
         run: |
-          echo ::set-env name=SHORT_SHA::${{ env.MOCK }}-$(git log -1 --format="%h")-$(echo ${{ steps.var.outputs.run_id }}).zip
+          echo ::set-env name=SHORT_SHA::${{ env.MOCK }}-$(git log -1 --format="%h")-${{ steps.var.outputs.run_id }}.zip
           echo ::set-env name=RUN_ID::$(echo ${{ steps.var.outputs.run_id }})
 
       - name: Read SHA and ID from ENV
         run: make test/env
+
+      - name: Read Latest tag
+        run: echo ${{ steps.tag.outputs.tag }}
